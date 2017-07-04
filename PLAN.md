@@ -225,5 +225,5 @@ value                   myapitoken
 
 ### Questions
 
-- Authenticity of the app?
+- Identity of the app?
 
