@@ -1,0 +1,3 @@
+ curl   -X PUT   -d "{\"secret_shares\":1, \"secret_threshold\":1}"   http://127.0.0.1:8200/v1/sys/init
+{"keys":["55cf36cfc2626bc419b1526d147ecff1d9ad247dc0c8ea84bad5a87406e3642d"],"keys_base64":["Vc82z8Jia8QZsVJtFH7P8dmtJH3AyOqEutWodAbjZC0="],"root_token":"eb83d827-c70e-c21b-5229-f136beb36645"}
+

@@ -1,0 +1,10 @@
+
+"
+Notice that the request to enable the AppRole endpoint needed an authentication token. In this case we are passing the root token generated when we started the Vault server. We could also generate tokens using any other authentication mechanisms, but we will use the root token for simplicity.
+
+"role_id": "100072a5-bc9d-8000-28ac-e60fb44e6de3"
+"data": {
+    "secret_id": "57b32b63-0909-50e0-2738-13e6cc04de8b",
+    "secret_id_accessor": "bfbded69-f5e5-e46c-02c0-44c980c9c115"
+  },
+  "<Paste>
