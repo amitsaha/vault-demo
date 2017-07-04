@@ -1,6 +1,6 @@
-# Goal: Application reads secret from vault
+## Goal: Application reads secret from vault
 
-## Start vault server
+### Start vault server
 
 ```
 $ sudo ./vault server -config=./vault.conf
@@ -19,7 +19,7 @@ $ sudo ./vault server -config=./vault.conf
 
 ```
 
-## Initialize Vault server
+### Initialize Vault server
 
 ```
 $ VAULT_ADDR=http://127.0.0.1:8200 ./vault init
@@ -40,7 +40,7 @@ Vault does not store the master key. Without at least 3 keys,
 your vault will remain permanently sealed.
 ```
 
-## Unseal
+### Unseal Vault
 
 ```
 $ VAULT_ADDR=http://127.0.0.1:8200 ./vault unseal zZi0trHXYAX4neuttonFwU3Lst/T47ngHM2UIKLIeIQW
@@ -60,7 +60,7 @@ Unseal Nonce: ac761062-9a4e-726e-4b4a-9893e3a2ac1a
 
 Perform above with two more keys.
 
-## Create the secret for the app
+### Create the secret for the app
 
 Now, we will create a secret for the application to access: `secret/testapp/facebook_api_key` (where `testapp` is the application name and will be the `approle`).
 
@@ -100,15 +100,15 @@ $ VAULT_TOKEN=88096632-1e74-6a09-3a57-e78b06597010 VAULT_ADDR=http://127.0.0.1:8
 
 ```
 
-## Setup `approle` - `testapp`
+### Setup `approle` - `testapp`
 
-### Enable approle auth backend
+#### Enable approle auth backend
 
 ```
 $ VAULT_TOKEN=ffd0f4f5-65af-6a8b-6048-7d12a5e3e657 VAULT_ADDR=http://127.0.0.1:8200 ./vault auth-enable 
 Successfully enabled 'approle' at 'approle'!
 ```
-### Create a policy for the approle token
+#### Create a policy for the approle token
 
 As admin, create an `approle` in vault, associate with it policy to access the secret:
 
@@ -126,15 +126,15 @@ Policy 'secrets-testapp-read' written.
 ```
 
 
-### Create an approle and associate with it a policy to read the secret
+#### Create an approle and associate with it a policy to read the secret
 
 $ VAULT_TOKEN=ffd0f4f5-65af-6a8b-6048-7d12a5e3e657 VAULT_ADDR=http://127.0.0.1:8200 ./vault write auth/approle/role/testapp secret_id_ttl=10m token_num_uses=10 token_ttl=20m token_max_ttl=30m secret_id_num_uses=40 policies=secrets-testapp-read
 Success! Data written to: auth/approle/role/testapp
 
 
-## Setup for application to access the secret
+### Setup for application to access the secret
 
-### Setup policy to access secret
+#### Setup policy to access secret
 
 As admin create a token for the app, which will be able to get the role_id, secret_id from vault with the following policy:
 
@@ -157,7 +157,7 @@ $ VAULT_TOKEN=ffd0f4f5-65af-6a8b-6048-7d12a5e3e657 VAULT_ADDR=http://127.0.0.1:8
 Policy 'approle-testapp-get-token' written.
 ```
 
-### Wrap it in a cubbyhole token temporary with max usage
+#### Wrap it in a cubbyhole token temporary with max usage
 
 ```
 $ VAULT_TOKEN=ffd0f4f5-65af-6a8b-6048-7d12a5e3e657 VAULT_ADDR=http://127.0.0.1:8200 ./vault token-create -policy=approle-testapp-get-token --wrap-ttl=24h --use-limit=10
@@ -168,7 +168,7 @@ wrapping_token_ttl:             24h0m0s
 wrapping_token_creation_time:   2017-07-04 16:56:54.833347211 +1000 AEST
 wrapped_accessor:               f6d780ba-229b-51c3-d90c-e194d57704a5
 ```
-### Access secret from the application
+#### Access secret from the application
 
 Use the above `wrapping_token` to unwrap the above token:
 
@@ -221,7 +221,7 @@ value                   myapitoken
 ```
 
 
-## Questions
+### Questions
 
 - Authenticity of the app?
 
