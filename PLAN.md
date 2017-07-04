@@ -128,9 +128,11 @@ Policy 'secrets-testapp-read' written.
 
 #### Create an approle and associate with it a policy to read the secret
 
+```
+
 $ VAULT_TOKEN=ffd0f4f5-65af-6a8b-6048-7d12a5e3e657 VAULT_ADDR=http://127.0.0.1:8200 ./vault write auth/approle/role/testapp secret_id_ttl=10m token_num_uses=10 token_ttl=20m token_max_ttl=30m secret_id_num_uses=40 policies=secrets-testapp-read
 Success! Data written to: auth/approle/role/testapp
-
+```
 
 ### Setup for application to access the secret
 
