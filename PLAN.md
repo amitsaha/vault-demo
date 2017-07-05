@@ -225,5 +225,5 @@ value                   myapitoken
 
 ### Questions
 
-- Identity of the app?
+- Identity of the app? https://www.hashicorp.com/blog/cubbyhole-authentication-principles/
 
