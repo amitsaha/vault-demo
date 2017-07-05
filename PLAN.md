@@ -231,5 +231,9 @@ value                   myapitoken
 
 A trusted process gets the `temptoken` (wrapped) and launches the application with the `temptoken` as an ENV VAR. But how does this process get the wrapped `temptoken`? May be that happens as part of the provisioning by contacting another locked down "admin" process.
 
+Refer:
+
+- https://kickstarter.engineering/ecs-vault-shhhhh-i-have-a-secret-40e41af42c28
+- https://github.com/DavidWittman/envconsul/tree/135-vault-unwrap
 
 
