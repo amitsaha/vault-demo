@@ -1,4 +1,4 @@
-## Goal: Application reads secret from vault
+## Goal: Application reads precreated secret from vault
 
 ### Start vault server
 
