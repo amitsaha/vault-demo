@@ -227,3 +227,9 @@ value                   myapitoken
 
 - Identity of the app? https://www.hashicorp.com/blog/cubbyhole-authentication-principles/
 
+#### Plan to implement above
+
+A trusted process gets the `temptoken` (wrapped) and launches the application with the `temptoken` as an ENV VAR. But how does this process get the wrapped `temptoken`? May be that happens as part of the provisioning by contacting another locked down "admin" process.
+
+
+
