@@ -237,6 +237,11 @@ Refer:
   - https://github.com/kickstarter/serverless-approle-manager
 - https://github.com/DavidWittman/envconsul/tree/135-vault-unwrap
 
+Vault controller implementation on Kubernetes:
+
+- https://github.com/kelseyhightower/vault-controller
+- https://github.com/Boostport/kubernetes-vault
+
 ##### Application deployed on a VM - one application instance per VM
 
 Strategy 1:
