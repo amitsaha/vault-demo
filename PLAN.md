@@ -236,4 +236,27 @@ Refer:
 - https://kickstarter.engineering/ecs-vault-shhhhh-i-have-a-secret-40e41af42c28
 - https://github.com/DavidWittman/envconsul/tree/135-vault-unwrap
 
+##### Application deployed on a VM - one application instance per VM
+
+Strategy 1:
+
+- Instance boots up
+- Starts the proxy process, P with a vault token `xxxx` which will be responsible for handing out wrapped secret IDs by talking directly to Vault cluster
+  - This can only hand out approle secret ids for a designated approle ensured by token `xxxx`
+  - A proxy process per instance, P
+  - This proxy process is handed out the token by the initialization script, injected as part of the initialization process
+    - Approle of the instance derived from the instance metadata
+    - Authenticity from the Instance security certificate and other ways
+    - Access lock down of the vault cluster ensures that only designated instances can talk to it
+      - For AWS: https://www.vaultproject.io/docs/auth/aws.html
+   
+- Application initialization script kicks off the following:
+  - Contact P for the `approle`'s wrapped `secret_id` (with max # of uses set to 2)
+  - P verifies that the process has priveleges to access the wrapped token (How?)
+  - Sends the wrapped token
+  - Starts the application passing the wrapped token in an environment variable
+  - Application reads the real `secret_id`. Using the `role_id` it then proceeds to get a token to access the secret
+
+
+
 
