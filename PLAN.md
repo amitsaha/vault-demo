@@ -234,7 +234,7 @@ A trusted process gets the `temptoken` (wrapped) and launches the application wi
 Refer:
 
 - https://kickstarter.engineering/ecs-vault-shhhhh-i-have-a-secret-40e41af42c28
- - https://github.com/kickstarter/serverless-approle-manager
+  - https://github.com/kickstarter/serverless-approle-manager
 - https://github.com/DavidWittman/envconsul/tree/135-vault-unwrap
 
 ##### Application deployed on a VM - one application instance per VM
