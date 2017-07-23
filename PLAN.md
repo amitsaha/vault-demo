@@ -105,7 +105,7 @@ $ VAULT_TOKEN=88096632-1e74-6a09-3a57-e78b06597010 VAULT_ADDR=http://127.0.0.1:8
 #### Enable approle auth backend
 
 ```
-$ VAULT_TOKEN=ffd0f4f5-65af-6a8b-6048-7d12a5e3e657 VAULT_ADDR=http://127.0.0.1:8200 ./vault auth-enable 
+$ VAULT_TOKEN=ffd0f4f5-65af-6a8b-6048-7d12a5e3e657 VAULT_ADDR=http://127.0.0.1:8200 ./vault auth-enable approle
 Successfully enabled 'approle' at 'approle'!
 ```
 #### Create a policy for the approle token
